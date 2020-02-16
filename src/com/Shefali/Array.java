@@ -10,27 +10,29 @@ public class Array {
     }
 
     public void insert(int number){
-        if(count < arrayInt.length)
-        { arrayInt[count] = number;
-            count++;}
-        else
-            throw new IndexOutOfBoundsException();
+        if(count == arrayInt.length)
+        {
+            int[] arrayNewInt = new int[arrayInt.length * 2];
+            for(int i=0;i<arrayInt.length;i++){
+                arrayNewInt[i] = arrayInt[i];
+            }
+            arrayInt = arrayNewInt;
+        }
+        arrayInt[count] = number;
+        count++;
     }
 
     public void removeAt(int index){
-        int i=0;
-        for (; i <arrayInt.length;i++) {
-            if(i == index)
-            {
-                arrayInt[i] = 0;
-                break;
-            }
+
+        if(index > count || index==-1)
+        {
+            throw new IndexOutOfBoundsException("Index is not available");
         }
-        int j=i;
-        for (; j <arrayInt.length-1;j++) {
+
+        for (int j = index; j <count;j++) {
             arrayInt[j] = arrayInt[j+1];
         }
-        arrayInt[j] = 0;
+        count--;
     }
 
     public int indexOf(int index){
@@ -42,6 +44,11 @@ public class Array {
             }
         }
         return -1;
+    }
+
+    public void print(){
+        for(int i = 0; i < count; i++)
+            System.out.println(arrayInt[i]);
     }
 
 }
