@@ -17,7 +17,7 @@ public class LinkedList {
     private Node last;
     private int count;
 
-    private boolean IsEmpty() {
+    public boolean IsEmpty() {
         return count == 0;
     }
 
@@ -208,5 +208,9 @@ public class LinkedList {
 
     public void createWithLoop(){
         last.next = first;
+    }
+
+    public int peek(){
+        return first.value;
     }
 }
