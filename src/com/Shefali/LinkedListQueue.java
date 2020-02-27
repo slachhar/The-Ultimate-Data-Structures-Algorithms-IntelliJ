@@ -1,34 +1,73 @@
 package com.Shefali;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class LinkedListQueue {
-    LinkedList ls = new LinkedList();
+    private class Node {
+        private Node next;
+        private int value;
 
-    public void enqueue(int item){
-        ls.addLast(item);
+        public Node(int value) {
+            this.value = value;
+        }
     }
 
-    public int dequeue(){
-        int item = ls.peek();
-        ls.deleteFirst();
-        return item;
+    private Node head;
+    private Node tail;
+    private int count;
+
+    public void enqueue(int item) {
+        if (count == 0) {
+            head = new Node(item);
+            tail = head;
+            return;
+        }
+
+        tail.next = new Node(item);
+
     }
 
-    public int peek(){
-        return ls.peek();
+    public int dequeue() {
+        if (count == 0) {
+            throw new IllegalStateException("No elements in the queue");
+        }
+        int value;
+        if (head == tail) {
+            value = head.value;
+            head = tail = null;
+        } else {
+            value = head.value;
+            Node second = head.next;
+            head.next = null;
+            head = second;
+        }
+        count--;
+        return value;
     }
 
-    public int size(){
-        return ls.size();
+    public int peek() {
+        if (count == 0) {
+            throw new IllegalStateException("No elements in the queue");
+        }
+        return head.value;
     }
 
-    public boolean isEmpty(){
-        return ls.IsEmpty();
+    public int size() {
+        return count;
     }
 
-    @Override
+    public boolean isEmpty() {
+        return head == null;
+    }
+
     public String toString() {
-        return Arrays.toString(ls.toArray());
+        ArrayList<Integer> ar = new ArrayList<>();
+        Node current = head;
+        while (current != null) {
+            ar.add(current.value);
+            current = current.next;
+        }
+        return ar.toString();
     }
 }

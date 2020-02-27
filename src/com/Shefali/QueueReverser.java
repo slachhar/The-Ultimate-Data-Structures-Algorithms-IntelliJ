@@ -2,21 +2,20 @@ package com.Shefali;
 
 public class QueueReverser {
     public ArrayQueue reverse(ArrayQueue queue, int k) {
+        if (k < 0 || k > queue.size()) {
+            throw new IllegalStateException("the value " +
+                    "of k is not within length of queue");
+        }
         Stack stack = new Stack();
-        ArrayQueue queue2 = new ArrayQueue();
-        ArrayQueue queue3 = new ArrayQueue();
         for (int i = 0; i < k; i++) {
             stack.push(queue.dequeue());
         }
-        for (int i = 0; !queue.isEmpty(); i++) {
-            queue2.enqueue(queue.dequeue());
+        while (!stack.isEmpty()) {
+            queue.enqueue(stack.pop());
         }
-        for (int i = 0; i < k; i++) {
-            queue3.enqueue(stack.pop());
+        for (int i = 0; i < queue.size() - k; i++) {
+            queue.enqueue(queue.dequeue());
         }
-        for (int i = 0; !queue2.isEmpty(); i++) {
-            queue3.enqueue(queue2.dequeue());
-        }
-        return queue3;
+        return queue;
     }
 }

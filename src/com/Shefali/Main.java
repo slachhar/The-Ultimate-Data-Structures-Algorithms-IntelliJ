@@ -8,18 +8,13 @@ public class Main {
 
     public static void main(String[] args) {
         // write your code here
-        LinkedListQueue queue = new LinkedListQueue();
-        queue.enqueue(10);
-        queue.enqueue(20);
-        queue.enqueue(30);
-        queue.dequeue();
-        queue.dequeue();
-        queue.dequeue();
-        //queue.dequeue();
-        queue.enqueue(40);
-        queue.enqueue(50);
+        QueueReverser qr = new QueueReverser();
+        ArrayQueue aq = new ArrayQueue();
+        aq.enqueue(10);
+        aq.enqueue(20);
+        aq.enqueue(30);
+        aq.enqueue(40);
+        System.out.println(qr.reverse(aq,2));
 
-        System.out.println(queue);
-        System.out.println(queue.peek());
     }
 }
