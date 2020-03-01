@@ -8,13 +8,18 @@ public class Main {
 
     public static void main(String[] args) {
         // write your code here
-        QueueReverser qr = new QueueReverser();
-        ArrayQueue aq = new ArrayQueue();
-        aq.enqueue(10);
-        aq.enqueue(20);
-        aq.enqueue(30);
-        aq.enqueue(40);
-        System.out.println(qr.reverse(aq,2));
+        /*HashMapLinearProbing hashMapLP = new HashMapLinearProbing();
+        hashMapLP.put(10,"Shefali");
+        hashMapLP.put(20,"Isha");
+        hashMapLP.put(25,"Prabhat");
+        hashMapLP.put(11,"Ranjeet");
+        hashMapLP.put(2,"Veena");
+        hashMapLP.put(2,"Anu");
+        hashMapLP.remove(3);
+        System.out.println(hashMapLP.get(3));*/
+
+        HashTableExercises hte = new HashTableExercises();
+        System.out.println(hte.countPairsWithDiff(new int[]{1, 7, 5, 9, 2, 12, 3}, 2));
 
     }
 }

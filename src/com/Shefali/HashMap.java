@@ -1,22 +1,23 @@
 package com.Shefali;
 
+import java.util.Map;
+
 public class HashMap {
     public char firstNonRepeatingCharacter(String s) {
-        java.util.HashMap<Character, Integer> hp = new java.util.HashMap<>();
+        Map<Character, Integer> hp = new java.util.HashMap<>();
         char firstNonRepeatingCharacter = ' ';
-        for (char item : s.replaceAll("\\s+", "").toCharArray()) {
-            if (!hp.containsKey(item))
-                hp.put(item, 1);
-            else {
-                Integer value = hp.get(item);
-                hp.put(item, value + 1);
-            }
+        char[] ch = s.toCharArray();
+        for (char item : ch) {
+            Integer value = hp.containsKey(item) ? hp.get(item) : 0;
+            hp.put(item, value + 1);
         }
-        for (char item : hp.keySet()) {
+
+        for (char item : ch) {
             if (hp.get(item) == 1) {
-                firstNonRepeatingCharacter = item;
+                return item;
             }
         }
-        return firstNonRepeatingCharacter;
+
+        return Character.MIN_VALUE;
     }
 }
