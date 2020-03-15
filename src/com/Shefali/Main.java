@@ -2,24 +2,34 @@ package com.Shefali;
 
 import org.w3c.dom.ls.LSOutput;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Stack;
 
 public class Main {
 
     public static void main(String[] args) {
-        // write your code here
-        /*HashMapLinearProbing hashMapLP = new HashMapLinearProbing();
-        hashMapLP.put(10,"Shefali");
-        hashMapLP.put(20,"Isha");
-        hashMapLP.put(25,"Prabhat");
-        hashMapLP.put(11,"Ranjeet");
-        hashMapLP.put(2,"Veena");
-        hashMapLP.put(2,"Anu");
-        hashMapLP.remove(3);
-        System.out.println(hashMapLP.get(3));*/
-
-        HashTableExercises hte = new HashTableExercises();
-        System.out.println(hte.countPairsWithDiff(new int[]{1, 7, 5, 9, 2, 12, 3}, 2));
-
+        //insert(2);
+        /*Node root = new Node(1);
+        root.leftChild = new Node(2);
+        root.rightChild = new Node(5);
+        root.leftChild.leftChild = new Node(3);
+        root.leftChild.rightChild = new Node(4);
+        root.rightChild.leftChild = new Node(6);
+        root.rightChild.rightChild = new Node(7);
+        root.rightChild.leftChild.leftChild = new Node(8);*/
+        TreeExcercise tree = new TreeExcercise();
+        tree.insert(5);
+        tree.insert(10);
+        tree.insert(3);
+        tree.insert(12);
+        tree.insert(15);
+        tree.insert(14);
+        ArrayList<Integer> list = new ArrayList<>();
+        // tree.getAncestors(root, 8, list);
+        System.out.println(list);
     }
 }
+
