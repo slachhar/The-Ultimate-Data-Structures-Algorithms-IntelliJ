@@ -5,6 +5,7 @@ public class Node {
     public Node rightChild;
     public int value;
     public int height;
+    public int balancedFactor;
 
     public Node(int value) {
         this.value = value;

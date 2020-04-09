@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.HashMap;
 
 public class TreeExcercise {
-    Node root;
+    Node node;
 
     public static void PrintHorizontalTreeTraversal(Node root, java.util.HashMap<Integer, List<Integer>> listHashMap, int level) {
         if (root == null) {
@@ -57,23 +57,74 @@ public class TreeExcercise {
     }
 
     public void insert(int value) {
-        root = insert(root, value);
+        node = insert(node, value, -1, -1);
     }
 
-    public Node insert(Node root, int value) {
+    public Node insert(Node root, int value, int left, int right) {
         if (root == null) {
-            root = new Node(value);
-            return root;
+            return new Node(value);
         }
 
         if (root.value < value) {
-            root.rightChild = insert(root.rightChild, value);
+            root.rightChild = insert(root.rightChild, value, right, left);
+            right = root.rightChild.height;
         } else {
-            root.leftChild = insert(root.leftChild, value);
+            root.leftChild = insert(root.leftChild, value, right, left);
+            left = root.leftChild.height;
         }
-
+        root.height = Math.max(left, right) + 1;
+        //balance factor = height(L) - height(R)
+        // > 1 => left heavy
+        // <-1 => right heavy
+        root.balancedFactor = left - right;
+        root = balanced(root);
 
         return root;
+    }
+
+    public Node balanced(Node node) {
+        if (node.balancedFactor > 1) {
+            // left heavy
+            if (node.leftChild.balancedFactor > 0) {
+                node = rightRotate(node);
+            } else if (node.leftChild.balancedFactor < 0) {
+                node.leftChild = leftRotate(node.leftChild);
+                node = rightRotate(node);
+            }
+        } else if (node.balancedFactor < -1) {
+            //right heavy
+            if (node.rightChild.balancedFactor > 0) {
+                node.rightChild = rightRotate(node.rightChild);
+                node = leftRotate(node);
+            } else if (node.rightChild.balancedFactor < 0) {
+                node = leftRotate(node);
+            }
+        }
+        return node;
+    }
+
+    public Node rightRotate(Node node) {
+        Node newRoot = node.leftChild;
+        node.leftChild = newRoot.rightChild;
+        newRoot.rightChild = node;
+        return newRoot;
+    }
+
+    public Node leftRotate(Node node) {
+        Node newRoot = node.rightChild;
+        node.rightChild = newRoot.leftChild;
+        newRoot.leftChild = node;
+        return newRoot;
+    }
+
+    public int height(Node root) {
+        if (root == null)
+            return -1;
+
+        int left = height(root.leftChild);
+        int right = height(root.rightChild);
+
+        return Math.max(left, right) + 1;
     }
 
 }

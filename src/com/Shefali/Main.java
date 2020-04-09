@@ -21,15 +21,12 @@ public class Main {
         root.rightChild.rightChild = new Node(7);
         root.rightChild.leftChild.leftChild = new Node(8);*/
         TreeExcercise tree = new TreeExcercise();
-        tree.insert(5);
         tree.insert(10);
-        tree.insert(3);
         tree.insert(12);
-        tree.insert(15);
-        tree.insert(14);
+        tree.insert(11);
         ArrayList<Integer> list = new ArrayList<>();
         // tree.getAncestors(root, 8, list);
-        System.out.println(list);
+       // System.out.println(list);
     }
 }
 
