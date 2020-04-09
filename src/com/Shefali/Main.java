@@ -20,13 +20,18 @@ public class Main {
         root.rightChild.leftChild = new Node(6);
         root.rightChild.rightChild = new Node(7);
         root.rightChild.leftChild.leftChild = new Node(8);*/
-        TreeExcercise tree = new TreeExcercise();
-        tree.insert(10);
-        tree.insert(12);
-        tree.insert(11);
-        ArrayList<Integer> list = new ArrayList<>();
+        Heap heap = new Heap();
+        heap.insert(15);
+        heap.insert(10);
+        heap.insert(3);
+        heap.insert(8);
+        heap.insert(12);
+        heap.insert(9);
+        heap.insert(4);
+        heap.insert(1);
+        heap.insert(24);
         // tree.getAncestors(root, 8, list);
-       // System.out.println(list);
+        // System.out.println(list);
     }
 }
 
