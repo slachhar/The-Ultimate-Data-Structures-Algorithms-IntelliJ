@@ -30,6 +30,8 @@ public class Main {
         heap.insert(4);
         heap.insert(1);
         heap.insert(24);
+        heap.delete(24);
+        System.out.println("Done");
         // tree.getAncestors(root, 8, list);
         // System.out.println(list);
     }
